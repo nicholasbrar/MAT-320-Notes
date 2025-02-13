@@ -12,28 +12,6 @@
 
 \section*{Cheat Sheet}
 
-\section*{The Mean Value Theorem}
-\textbf{Theorem:} Let $f: [a, b] \to \mathbb{R}$ be a continuous function on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$. Then there exists a point $c \in (a, b)$ such that
-\[
-f'(c) = \frac{f(b) - f(a)}{b - a}.
-\]
-
-\section*{Rolle's Theorem}
-\textbf{Theorem:} Let $f: [a, b] \to \mathbb{R}$ be a continuous function on the closed interval $[a, b]$, differentiable on the open interval $(a, b)$, and suppose $f(a) = f(b)$. Then there exists a point $c \in (a, b)$ such that
-\[
-f'(c) = 0.
-
-\begin{theorem}[Intermediate Value Theorem (IVT)]
-Let $f : [a, b] \to \mathbb{R}$ be a continuous function. If $f(a) \neq f(b)$ and $k$ is any value between $f(a)$ and $f(b)$, then there exists some $c \in (a, b)$ such that $f(c) = k$.
-\end{theorem}
-
-\begin{theorem}[Extreme Value Theorem (Weierstrass)]
-Let $f : [a, b] \to \mathbb{R}$ be a continuous function. Then $f$ attains both a maximum and a minimum value on $[a, b]$. That is, there exist $x_m, x_M \in [a, b]$ such that
-\[
-    f(x_m) \leq f(x) \leq f(x_M) \quad \text{for all } x \in [a, b].
-\]
-\end{theorem}
-
 \section*{Metric Spaces}
 
 \begin{definition}[Metric Space]
@@ -134,9 +112,9 @@ X = U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}.
 \]
 \end{definition}
 
-\begin{example}
+\begin{proof}
 The metric space $X = \mathbb{R}$ is not compact. To see this, consider the open cover $\{U_\alpha : \alpha \in [1, \infty)\}$ where $U_\alpha = (-\alpha, \alpha)$. For any finite subcollection $\{U_{\alpha_1}, \ldots, U_{\alpha_n}\}$, the union is $(-M, M)$ with $M = \max\{\alpha_1, \ldots, \alpha_n\}$, which does not cover $\mathbb{R}$ entirely.
-\end{example}
+\end{proof}
 
 \begin{definition}[Compact Subset]
 A subset $E \subseteq X$ of a metric space $(X, d)$ is compact if for every open cover $\{U_\alpha \subseteq X : \alpha \in I\}$ such that:
@@ -261,4 +239,250 @@ The metric space $B(E, \mathbb{R})$ (the space of bounded functions on $E$) is c
 \end{theorem}
 
 
+\subsection*{Continuity}
+
+
+\begin{theorem}[Intermediate Value Theorem (IVT)]
+Let $f : [a, b] \to \mathbb{R}$ be a continuous function. If $f(a) \neq f(b)$ and $k$ is any value between $f(a)$ and $f(b)$, then there exists some $c \in (a, b)$ such that $f(c) = k$.
+\end{theorem}
+
+\begin{theorem}[Extreme Value Theorem (Weierstrass)]
+Let $f : [a, b] \to \mathbb{R}$ be a continuous function. Then $f$ attains both a maximum and a minimum value on $[a, b]$. That is, there exist $x_m, x_M \in [a, b]$ such that
+\[
+    f(x_m) \leq f(x) \leq f(x_M) \quad \text{for all } x \in [a, b].
+\]
+\end{theorem}
+
+\begin{definition}[Continuity at a Point]
+Let \( f : \mathbb{R} \to \mathbb{R} \) be a function. We say that \( f \) is \textbf{continuous} at a point \( c \in \mathbb{R} \) if for every \( \varepsilon > 0 \), there exists a \( \delta > 0 \) such that:
+\[
+|f(x) - f(c)| < \varepsilon \quad \text{whenever} \quad |x - c| < \delta.
+\]
+In other words, for every \( \varepsilon > 0 \), there is a \( \delta > 0 \) such that if \( x \) is within \( \delta \) of \( c \), then \( f(x) \) is within \( \varepsilon \) of \( f(c) \).
+\end{definition}
+
+\begin{definition}[Continuity on an Interval]
+A function \( f : [a, b] \to \mathbb{R} \) is said to be continuous on the interval \( [a, b] \) if it is continuous at every point in the interval.
+\end{definition}
+
+\subsection*{Uniform Continuity}
+
+\begin{definition}[Uniform Continuity]
+A function \( f : [a, b] \to \mathbb{R} \) is said to be \textbf{uniformly continuous} on \( [a, b] \) if for every \( \varepsilon > 0 \), there exists a \( \delta > 0 \) such that:
+\[
+|f(x) - f(y)| < \varepsilon \quad \text{whenever} \quad |x - y| < \delta \quad \text{for all} \quad x, y \in [a, b].
+\]
+In other words, the choice of \( \delta \) does not depend on the point \( x \), but is valid for all \( x, y \in [a, b] \).
+\end{definition}
+
+\begin{definition}[Lipschitz Continuity]
+A function \( f : X \to Y \), where \( X \) and \( Y \) are metric spaces, is said to be \textbf{Lipschitz continuous} if there exists a constant \( L \geq 0 \) such that for all \( x, y \in X \), we have:
+\[
+d_Y(f(x), f(y)) \leq L \cdot d_X(x, y),
+\]
+where \( d_X \) and \( d_Y \) are the metrics on \( X \) and \( Y \), respectively. The smallest such constant \( L \) is called the \textbf{Lipschitz constant} of \( f \).
+\end{definition}
+
+
+\section*{Differentiation}
+\begin{definition}[Existence of Derivative]
+Let \( f\) be a real-valued function defined on an open interval containing
+a point a. We say f is differentiable at a if
+\[
+\lim_{x \to a} \frac{f(x) - f(a)}{x - a}
+\]
+exists and is finite.
+\[
+f'(y) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a}
+\]
+\end{definition}
+\begin{theorem}
+If \(f\) is differentiable at a point a, then \(f\) is continuous at a.
+\end{theorem}
+\begin{theorem}
+Let \( f : I \to \mathbb{R} \), where \( I \) is an open interval. If \( x_0 \in I \) is a point of local minimum or maximum of \( f(x) \), and \( f \) is differentiable at \( x_0 \), then
+\[
+f'(x_0) = 0.
+\]
+\end{theorem}
+\begin{theorem} [Rolle's Theorem]
+Let \( f: [a, b] \to \mathbb{R} \) be a continuous function on the closed interval \( [a, b] \), differentiable on the open interval \( (a, b) \), and suppose \( f(a) = f(b) \). Then there exists at least one point \( c \in (a, b) \) such that
+\[
+f'(c) = 0.
+\]
+\end{theorem}
+\begin{theorem} [Mean Value Theorem]
+Let $f: [a, b] \to \mathbb{R}$ be a continuous function on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$. Then there exists a point $c \in (a, b)$ such that
+\[
+f'(c) = \frac{f(b) - f(a)}{b - a}.
+\]
+\end{theorem}
+\begin{corollary}
+Let \( f \) be a differentiable function on an interval \( (a, b) \). Then
+\begin{itemize}
+    \item[(i)] \( f \) is strictly increasing if \( f'(x) > 0 \) for all \( x \in (a, b) \);
+    \item[(ii)] \( f \) is strictly decreasing if \( f'(x) < 0 \) for all \( x \in (a, b) \);
+    \item[(iii)] \( f \) is increasing if \( f'(x) \geq 0 \) for all \( x \in (a, b) \);
+    \item[(iv)] \( f \) is decreasing if \( f'(x) \leq 0 \) for all \( x \in (a, b) \).
+\end{itemize}
+\end{corollary}
+\begin{definition}[IVT for Derivatives]
+Let \( f \) be a differentiable function on \( (a, b) \). If \( a < x_1 < x_2 < b \), and if \( c \) lies between \( f'(x_1) \) and \( f'(x_2) \), there exists [at least one] \( x \in (x_1, x_2) \) such that \( f'(x) = c \).
+\end{definition}
+\begin{definition}[Differentiability at a Point]
+Let \( f : \mathbb{R} \to \mathbb{R} \) be a function. We say that \( f \) is differentiable at a point \( c \in \mathbb{R} \) if the following limit exists:
+\[
+f'(c) = \lim_{h \to 0} \frac{f(c+h) - f(c)}{h}.
+\]
+
+\end{definition}
+
+\section*{Power Series}
+\subsection*{Radius of Convergence}
+For a power series of the form
+\[
+\sum_{n=0}^{\infty} a_n x^n,
+\]
+the radius of convergence describes the distance within which the series converges absolutely and uniformly, and outside of which it diverges.
+\begin{definition}[Ratio Test]
+\[
+\frac{1}{R} = \limsup_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|.
+\]
+\end{definition}
+\begin{definition}[Root Test]
+\[
+\frac{1}{R} = \limsup_{n \to \infty} \sqrt[n]{|a_n|}.
+\]
+\end{definition}
+\begin{definition}[Taylor Series]
+The Taylor series of a function \( f(x) \) around a point \( a \) is given by
+\[
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x - a)^n.
+\]
+\end{definition}
+\begin{definition}[Partial Sum]
+The \( N \)-th partial sum \( b_N(x) \) of a power series is given by
+\[
+b_N(x) = \sum_{n=0}^{N} a_n x^n.
+\]
+\end{definition}
+\begin{definition}[Remainder]
+Given a function \( f(x) \) and its Taylor series expansion at \( x = a \):
+\[
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n,
+\]
+the remainder \( R_N(x) \) is defined as the difference between the function \( f(x) \) and the partial sum \( b_N(x) \):
+\[
+R_N(x) = f(x) - \sum_{n=0}^{N} \frac{f^{(n)}(a)}{n!} (x-a)^n.
+\]
+\end{definition}
+
+\section*{Integration}
+\begin{definition}
+Let \( f \) be a function. If \( f \) is bounded and has compact support, then \( f \) is Riemann integrable.
+\end{definition}
+\begin{theorem}
+A function \( f \) is Riemann integrable if and only if for all \( \epsilon > 0 \), there exist step functions \( \phi \) and \( \psi \) such that
+\[
+\phi \leq f \leq \psi
+\]
+and
+\[
+\int_{-\infty}^{\infty} \psi - \int_{-\infty}^{\infty} \phi < \epsilon.
+\]
+\end{theorem}
+
+\begin{theorem}
+A function \( f \) is integrable if and only if there exist step functions \( \phi_n \) and \( \psi_n \) such that
+\[
+\lim_{n \to \infty} \int_{-\infty}^{\infty} \phi_n = \lim_{n \to \infty} \int_{-\infty}^{\infty} \psi_n.
+\]
+\end{theorem}
+\begin{theorem}
+If \( f \) and \( g \) are Riemann integrable, then
+\[
+\int_{-\infty}^{\infty} (f(x) + g(x)) \, dx = \int_{-\infty}^{\infty} f(x) \, dx + \int_{-\infty}^{\infty} g(x) \, dx.
+\]
+\end{theorem}
+\begin{lemma}
+If \( f \) is continuous, then \( f \) is Riemann integrable on any compact set.
+\end{lemma}
+\begin{lemma}
+If \( f \) is increasing, then \( f \) is Riemann integrable on any compact set.
+\end{lemma}
+\begin{theorem}
+Let \( f : \mathbb{R} \to \mathbb{R} \) be an increasing or decreasing function. If \( f \) is Riemann integrable, then \( f \) is Riemann integrable on any compact interval \( [a, b] \).
+\end{theorem}
+\begin{theorem}[Integral Mean Theorem]
+Let \( f : [a, b] \to \mathbb{R} \) be a continuous function. Then there exists a point \( c \in [a, b] \) such that
+\[
+\int_a^b f(x) \, dx = f(c)(b - a).
+\]
+\end{theorem}
+\begin{theorem}
+Let \( f \) be an integrable function on the interval \( [a, b] \). Define the function \( F(x) \) as
+\[
+F(x) = \int_a^x f(t) \, dt.
+\]
+Then, \( F \) is differentiable, and
+\[
+F'(x) = f(x) \text{ for all } x \in [a, b].
+\]
+\end{theorem}
+\begin{theorem}
+Let \( G : [a, b] \to \mathbb{R} \) be such that \( G'(x) = f(x) \) for all \( x \in [a, b] \). Then,
+\[
+\int_a^b f(t) \, dt = G(b) - G(a).
+\]
+\end{theorem}
+\begin{definition}
+Let \( X \subset B[a, b] \) denote the subset of integrable functions.
+\end{definition}
+\begin{theorem}
+Let \( X \subseteq B[a,b] \) be a subset of the space of functions \( B[a,b] \). If \( X \) is closed in \( B[a,b] \), then the following is equivalent:
+\begin{itemize}
+    \item If \( f_n \to f \) in \( B[a,b] \) and \( f_n \in X \) for all \( n \), then \( f \) is the limit of \( f_n \) and is integrable.
+\end{itemize}
+\end{theorem}
+\begin{theorem}
+A function \( f \) is Riemann integrable on \( [a,b] \) if and only if for every \( \epsilon > 0 \), there exist step functions \( \varphi \) and \( \psi \) such that:
+
+\[
+\varphi(x) \leq f(x) \leq \psi(x) \quad \text{for all } \, x \in [a,b],
+\]
+and
+\[
+\int_a^b \psi(x) \, dx - \int_a^b \varphi(x) \, dx < \epsilon.
+\]
+\end{theorem}
+\begin{corollary}
+If \( X \subset B[a,b] \), then \( X \) is complete, because it is closed in a complete space.
+\end{corollary}
+\begin{corollary}
+Let \( f : (-R, R) \to \mathbb{R} \) be a power series of the form
+\[
+f(x) = \sum_{n=0}^{\infty} a_n x^n.
+\]
+Then \( f(x) \) is integrable on all compact intervals that are subsets of \( (-R, R) \).
+\end{corollary}
+\begin{corollary}
+Let \( f_n(x) \) be a sequence of functions. If \( f_n(x) \) is converging uniformly to \( f(x) \) on any compact interval \( [a,b[ \) that is a subset of \( (-R, R) \), then the convergence is uniform on that interval.
+\end{corollary}
+\subsection*{1. Sum of \( 1 \)}
+\[
+\sum_{k=1}^n 1 = n
+\]
+\subsection*{2. Sum of \( k \)}
+\[
+\sum_{k=1}^n k = \frac{n(n+1)}{2}
+\]
+\subsection*{3. Sum of \( k^2 \)}
+\[
+\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}
+\]
+\subsection*{4. Sum of \( k^3 \)}
+\[
+\sum_{k=1}^n k^3 = \left( \frac{n(n+1)}{2} \right)^2
+\]
 \end{document}
+
